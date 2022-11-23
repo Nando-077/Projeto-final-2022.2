@@ -1,7 +1,5 @@
 import pygame
 
-pygame.init()
-
 # ----- Gera tela principal
 largura = 600
 altura = 400
@@ -22,6 +20,8 @@ while game:
         # ----- Verifica consequências
         if event.type == pygame.QUIT:
             game = False
+    
+    
 
     # ----- Gera saídas
     window.fill((0, 0, 0))  # Preenche com a cor branca
