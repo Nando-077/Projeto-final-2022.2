@@ -17,21 +17,21 @@ window = pygame.display.set_mode((largura, altura))
 
 
 imagem = pygame.image.load('assets/img/download (1).jpg').convert_alpha()
-#RUNNING = pygame.image.load('assets/img/jacare.jpg').convert_alpha()
-#DUCKING = pygame.image.load('assets/img/jacare2.jpg').convert_alpha()
-#JUMPING = pygame.image.load('assets/img/jacare.jpg').convert_alpha()
+#RUNNING = pygame.image.load('assets/img/jacare.png').convert_alpha()
+#DUCKING = pygame.image.load('assets/img/jacare2.png').convert_alpha()
+#JUMPING = pygame.image.load('assets/img/jacare.png').convert_alpha()
 #raposa = pygame.image.load('assets/img/raposa.png').convert_alpha()
 
-correndo = [pygame.image.load(os.path.join("assets/img", "jacare.jpg")),
-           pygame.image.load(os.path.join("assets/img", "jacare.jpg"))]
+correndo = [pygame.image.load(os.path.join("assets/img", "jacare.png")),
+           pygame.image.load(os.path.join("assets/img", "jacare.png"))]
 #RUNNING = pygame.transform.scale(RUNNING, (90,90))
-pulando = pygame.image.load(os.path.join("assets/img", "jacare.jpg"))
-abaixando = [pygame.image.load(os.path.join("assets/img", "jacare2.jpg")),
-           pygame.image.load(os.path.join("assets/img", "jacare2.jpg"))]
+pulando = pygame.image.load(os.path.join("assets/img", "jacare.png"))
+abaixando = [pygame.image.load(os.path.join("assets/img", "jacare2.png")),
+           pygame.image.load(os.path.join("assets/img", "jacare2.png"))]
 
 
 class jacare:
-    X_POS = 30
+    X_POS = 300
     Y_POS = 405
     Y_POS_bai = 450
     pulo_VEL = 8.5
