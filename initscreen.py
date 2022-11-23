@@ -63,4 +63,3 @@ def init_screen(window):
     return state
 
     
-   
