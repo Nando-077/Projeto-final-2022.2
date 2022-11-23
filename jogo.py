@@ -38,70 +38,70 @@ class jacare:
 
     def __init__(self):
         self.ab_img = abaixando
-        self.run_img = correndo
-        self.jump_img = pulando
+        self.corr_img = correndo
+        self.pul_img = pulando
 
-        self.dino_duck = False
-        self.dino_run = True
-        self.dino_jump = False
+        self.jac_ab = False
+        self.jac_corr = True
+        self.jac_pul = False
 
         self.step_index = 0
-        self.jump_vel = self.pulo_VEL
-        self.image = self.run_img[0]
-        self.dino_rect = self.image.get_rect()
-        self.dino_rect.x = self.X_POS
-        self.dino_rect.y = self.Y_POS
+        self.pulo_vel = self.pulo_VEL
+        self.image = self.corr_img[0]
+        self.jac_rect = self.image.get_rect()
+        self.jac_rect.x = self.X_POS
+        self.jac_rect.y = self.Y_POS
     def update(self, userInput):
-        if self.dino_duck:
+        if self.jac_ab:
             self.duck()
-        if self.dino_run:
+        if self.jac_corr:
             self.run()
-        if self.dino_jump:
+        if self.jac_pul:
             self.jump()
 
         if self.step_index >= 10:
             self.step_index = 0
 
-        if userInput[pygame.K_UP] and not self.dino_jump:
-            self.dino_duck = False
-            self.dino_run = False
-            self.dino_jump = True
-        elif userInput[pygame.K_DOWN] and not self.dino_jump:
-            self.dino_duck = True
-            self.dino_run = False
-            self.dino_jump = False
-        elif not (self.dino_jump or userInput[pygame.K_DOWN]):
-            self.dino_duck = False
-            self.dino_run = True
-            self.dino_jump = False
+        if userInput[pygame.K_UP] and not self.jac_pul:
+            self.jac_ab = False
+            self.jac_corr = False
+            self.jac_pul = True
+        elif userInput[pygame.K_DOWN] and not self.jac_pul:
+            self.jac_ab = True
+            self.jac_corr = False
+            self.jac_pul = False
+        elif not (self.jac_pul or userInput[pygame.K_DOWN]):
+            self.jac_ab = False
+            self.jac_corr = True
+            self.jac_pul = False
     def duck(self):
         self.image = self.ab_img[self.step_index // 5]
-        self.dino_rect = self.image.get_rect()
-        self.dino_rect.x = self.X_POS
-        self.dino_rect.y = self.Y_POS_bai
+        self.jac_rect = self.image.get_rect()
+        self.jac_rect.x = self.X_POS
+        self.jac_rect.y = self.Y_POS_bai
         self.step_index += 1
         self.image = pygame.transform.scale(self.image, (90,45))
     def run(self):
-        self.image = self.run_img[self.step_index // 5]
-        self.dino_rect = self.image.get_rect()
-        self.dino_rect.x = self.X_POS
-        self.dino_rect.y = self.Y_POS
+        self.image = self.corr_img[self.step_index // 5]
+        self.jac_rect = self.image.get_rect()
+        self.jac_rect.x = self.X_POS
+        self.jac_rect.y = self.Y_POS
         self.step_index += 1
         self.image = pygame.transform.scale(self.image, (90,90))
 
     def jump(self):
-        self.image = self.jump_img
-        if self.dino_jump:
-            self.dino_rect.y -= self.jump_vel * 4
-            self.jump_vel -= 0.8
+        self.image = self.pul_img
+        if self.jac_pul:
+            self.jac_rect.y -= self.pulo_vel * 4
+            self.pulo_vel -= 0.8
             self.image = pygame.transform.scale(self.image, (90,90))
-        if self.jump_vel < - self.pulo_VEL:
-            self.dino_jump = False
-            self.jump_vel = self.pulo_VEL
+        if self.pulo_vel < - self.pulo_VEL:
+            self.jac_pul = False
+            self.pulo_vel = self.pulo_VEL
             self.image = pygame.transform.scale(self.image, (90,90))
 
     def draw(self, SCREEN):
-        SCREEN.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
+        SCREEN.blit(self.image, (self.jac_rect.x, self.jac_rect.y))
 
 
 
