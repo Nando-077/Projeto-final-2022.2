@@ -6,4 +6,3 @@ from config import IMG_DIR, FPS, GAME, QUIT
 
 def init_screen(screen):
     
-   
