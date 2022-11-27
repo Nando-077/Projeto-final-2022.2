@@ -32,7 +32,7 @@ class raposa(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = -larg_rapo
         self.rect.y = random.randint(350, 550)
-        self.speedx = random.randint(4,6)
+        self.speedx = random.randint(4,15)
         self.speedy = 0
 
     def update(self):
@@ -44,7 +44,7 @@ class raposa(pygame.sprite.Sprite):
         if self.rect.top > altura or self.rect.right < 0 or self.rect.left > largura:
             self.rect.x = -larg_rapo
             self.rect.y = random.randint(350, 550 )
-            self.speedx = random.randint(4,6)
+            self.speedx = random.randint(4,25)
            
 
 game = True
