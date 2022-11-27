@@ -126,7 +126,7 @@ class raposa(Obstacle):
     def __init__(self, image):
         self.type = 0
         super().__init__(image, self.type)
-        self.rect.y = 400
+        self.rect.y = random.randint (250,400)
         self.index = 0
         
 
