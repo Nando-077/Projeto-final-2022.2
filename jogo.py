@@ -20,7 +20,7 @@ imagem = pygame.image.load('assets/img/download (1).jpg').convert_alpha()
 #RUNNING = pygame.image.load('assets/img/jacare.png').convert_alpha()
 #DUCKING = pygame.image.load('assets/img/jacare2.png').convert_alpha()
 #JUMPING = pygame.image.load('assets/img/jacare.png').convert_alpha()
-#raposa = pygame.image.load('assets/img/raposa.png').convert_alpha()
+raposa = pygame.image.load('assets/img/raposa.png').convert_alpha()
 
 correndo = [pygame.image.load(os.path.join("assets/img", "jacare.png")),
            pygame.image.load(os.path.join("assets/img", "jacare.png"))]
@@ -100,9 +100,37 @@ class jacare:
             self.pulo_vel = self.pulo_VEL
             self.image = pygame.transform.scale(self.image, (90,90))
 
-    def draw(self, SCREEN):
-        SCREEN.blit(self.image, (self.jac_rect.x, self.jac_rect.y))
+    def draw(self, window):
+        window.blit(self.image, (self.jac_rect.x, self.jac_rect.y))
 
+
+class Obstacle:
+    def __init__(self, image, type):
+        self.image = image
+        self.type = type
+        self.rect = self.image[self.type].get_rect()
+        self.rect.x = altura
+
+    def update(self):
+        self.rect.x -= game_speed
+        if self.rect.x < -self.rect.width:
+            obstacles.pop()
+
+    def draw(self, window):
+        window.blit(self.image[self.type], self.rect)
+
+class Bird(Obstacle):
+    def __init__(self, image):
+        self.type = 0
+        super().__init__(image, self.type)
+        self.rect.y = 250
+        self.index = 0
+
+    def draw(self, window):
+        if self.index >= 9:
+            self.index = 0
+        window.blit(self.image[self.index//5], self.rect)
+        self.index += 1
 
 
 
@@ -111,10 +139,14 @@ class jacare:
 
 def main():
 
+    global game_speed, x_pos_bg, y_pos_bg, points, obstacles
     game = True
     clock = pygame.time.Clock()
     jogador = jacare()
+    font = pygame.font.Font('freesansbold.ttf', 20)
+    obstacles = []
 
+ 
     while game:
 
             # ----- Trata eventos
