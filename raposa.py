@@ -23,7 +23,7 @@ rapo_img= pygame.transform.scale(rapo_img, (larg_rapo, alt_rapo))
 
 # ----- Inicia estruturas de dados
 # Definindo os novos tipos
-class Meteor(pygame.sprite.Sprite):
+class raposa(pygame.sprite.Sprite):
     def __init__(self, img):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
@@ -32,7 +32,7 @@ class Meteor(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = -larg_rapo
         self.rect.y = random.randint(350, 550)
-        self.speedx = random.randint(4, 6)
+        self.speedx = random.randint(4,6)
         self.speedy = 0
 
     def update(self):
@@ -44,7 +44,7 @@ class Meteor(pygame.sprite.Sprite):
         if self.rect.top > altura or self.rect.right < 0 or self.rect.left > largura:
             self.rect.x = -larg_rapo
             self.rect.y = random.randint(350, 550 )
-            self.speedx = random.randint(4, 6)
+            self.speedx = random.randint(4,6)
            
 
 game = True
@@ -53,8 +53,8 @@ clock = pygame.time.Clock()
 FPS = 30
 
 # Criando dois meteoros
-rapo1 = Meteor(rapo_img)
-rapo2 = Meteor(rapo_img)
+rapo1 = raposa(rapo_img)
+rapo2 = raposa(rapo_img)
 
 # ===== Loop principal =====
 while game:
@@ -78,7 +78,8 @@ while game:
     window.blit(rapo1.image, rapo1.rect)
     window.blit(rapo2.image, rapo2.rect)
 
-    pygame.display.update()  # Mostra o novo frame para o jogador
+    pygame.display.update()
+      # Mostra o novo frame para o jogador
 
 # ===== Finalização =====
 pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
