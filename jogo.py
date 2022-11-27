@@ -31,7 +31,7 @@ abaixando = [pygame.image.load(os.path.join("assets/img", "jacare2.png")),
 
 
 class jacare:
-    X_POS = 300
+    X_POS = 800
     Y_POS = 405
     Y_POS_bai = 450
     pulo_VEL = 8.5
