@@ -29,6 +29,7 @@ pulando = pygame.image.load(os.path.join("assets/img", "jacare.png"))
 abaixando = [pygame.image.load(os.path.join("assets/img", "jacare2.png")),
            pygame.image.load(os.path.join("assets/img", "jacare2.png"))]
 
+pontos = [1,0,2,3,4]
 
 class jacare:
     X_POS = 800
@@ -145,6 +146,37 @@ def main():
     jogador = jacare()
     font = pygame.font.Font('freesansbold.ttf', 20)
     obstacles = []
+    points = 0
+    game_speed = 20
+    perdeu = False
+
+    def score():
+        global points, game_speed
+        points += 1
+        if points % 100 == 0:
+            game_speed += 1
+
+        text = font.render("Points: " + str(points), True, (225, 225, 225))
+        textRect = text.get_rect()
+        textRect.center = (1000, 100)
+        window.blit(text, textRect)
+        
+    
+    def vencedores():
+        ordenado = sorted(pontos, reverse = True)
+        dist = 100
+        for top_c in ordenado:
+            imprime = top_c
+            t_vence = font.render(str(imprime),True,(50,50,225))
+            textRect = t_vence.get_rect()
+            textRect.center = (200, dist)
+            window.blit(t_vence, textRect)
+            dist = dist +20
+            
+
+
+
+            
 
  
     while game:
@@ -164,6 +196,12 @@ def main():
 
         jogador.draw(window)
         jogador.update(userInput)
+        score()
+        vencedores()
+        if perdeu == True:
+            pontos.append(points)
+            game = False
+
 
         clock.tick(30)
         pygame.display.update()
