@@ -5,7 +5,7 @@ import random
 import time
 import os
 
-from raposa import raposa
+#from raposa import raposa
 from assets import musica, load_assets
 #from menu import menu
 
@@ -20,23 +20,17 @@ window = pygame.display.set_mode((largura, altura))
 
 
 imagem = pygame.image.load('assets/img/download (1).jpg').convert_alpha()
-#RUNNING = pygame.image.load('assets/img/jacare.png').convert_alpha()
-#DUCKING = pygame.image.load('assets/img/jacare2.png').convert_alpha()
-#JUMPING = pygame.image.load('assets/img/jacare.png').convert_alpha()
-raposa = pygame.image.load('assets/img/raposa.png').convert_alpha()
-
-correndo = [pygame.image.load(os.path.join("assets/img", "jacare.png")),
-           pygame.image.load(os.path.join("assets/img", "jacare.png"))]
-#RUNNING = pygame.transform.scale(RUNNING, (90,90))
-pulando = pygame.image.load(os.path.join("assets/img", "jacare.png"))
-abaixando = [pygame.image.load(os.path.join("assets/img", "jacare2.png")),
-           pygame.image.load(os.path.join("assets/img", "jacare2.png"))]
+correndo = pygame.image.load('assets/img/jacare.png').convert_alpha()
+abaixando = pygame.image.load('assets/img/jacare2.png').convert_alpha()
+pulando = pygame.image.load('assets/img/jacare.png').convert_alpha()
+raposa_tx = pygame.image.load('assets/img/raposa.png').convert_alpha()
 
 pontos = [1,0,2,3,4]
-
+raposa_tx= pygame.transform.scale(raposa_tx, (120,90))
+raposa_tx= pygame.transform.flip(raposa_tx,True,False)
 
 class jacare:
-    X_POS = 800
+    X_POS =200
     Y_POS = 405
     Y_POS_bai = 450
     pulo_VEL = 8.5
@@ -52,7 +46,7 @@ class jacare:
 
         self.step_index = 0
         self.pulo_vel = self.pulo_VEL
-        self.image = self.corr_img[0]
+        self.image = self.corr_img
         self.jac_rect = self.image.get_rect()
         self.jac_rect.x = self.X_POS
         self.jac_rect.y = self.Y_POS
@@ -80,14 +74,14 @@ class jacare:
             self.jac_corr = True
             self.jac_pul = False
     def duck(self):
-        self.image = self.ab_img[self.step_index // 5]
+        self.image = self.ab_img
         self.jac_rect = self.image.get_rect()
         self.jac_rect.x = self.X_POS
         self.jac_rect.y = self.Y_POS_bai
         self.step_index += 1
         self.image = pygame.transform.scale(self.image, (90,45))
     def run(self):
-        self.image = self.corr_img[self.step_index // 5]
+        self.image = self.corr_img
         self.jac_rect = self.image.get_rect()
         self.jac_rect.x = self.X_POS
         self.jac_rect.y = self.Y_POS
@@ -113,8 +107,12 @@ class Obstacle:
     def __init__(self, image, type):
         self.image = image
         self.type = type
-        self.rect = self.image[self.type].get_rect()
-        self.rect.x = altura
+        self.rect = self.image.get_rect()
+        self.rect.x = largura
+        self.step_index = 0
+        
+
+
 
     def update(self):
         self.rect.x -= game_speed
@@ -124,18 +122,21 @@ class Obstacle:
     def draw(self, window):
         window.blit(self.image[self.type], self.rect)
 
-class Bird(Obstacle):
+class raposa(Obstacle):
     def __init__(self, image):
         self.type = 0
         super().__init__(image, self.type)
-        self.rect.y = 250
+        self.rect.y = 400
         self.index = 0
+        
 
     def draw(self, window):
         if self.index >= 9:
             self.index = 0
-        window.blit(self.image[self.index//5], self.rect)
+        window.blit(self.image, self.rect)
         self.index += 1
+        
+
 
 
 def main():
@@ -149,7 +150,9 @@ def main():
     points = 0
     game_speed = 20
     perdeu = False
-
+    x_pos_bg = 0
+    y_pos_bg = 380
+  
 
     def score():
         global points, game_speed
@@ -194,9 +197,21 @@ def main():
         fundo = pygame.transform.scale(fundo, (largura, altura))
         userInput = pygame.key.get_pressed()
         window.blit(fundo, (0, 0))
+        
 
         jogador.draw(window)
         jogador.update(userInput)
+        if len(obstacles) == 0:
+            #if random.randint(0, 2) == 2:
+            obstacles.append(raposa(raposa_tx))
+
+        for obstacle in obstacles:
+            obstacle.draw(window)
+            obstacle.update()
+            if jogador.jac_rect.colliderect(obstacle.rect):
+                pygame.time.delay(30)
+                #death_count += 1
+                #menu(death_count)
         score()
         vencedores()
         if perdeu == True:
@@ -210,13 +225,7 @@ def main():
 
 main ()
 
-assets = load_assets
-assets[musica].play()
+#assets = load_assets
+#assets[musica].play()
 
-raposa_sprite = pygame.sprite.Group()
-groups = {}
-groups['raposa'] = raposa_sprite
-for i in range(0,3):
-    fox = raposa(assets)
-    raposa_sprite.add(fox)
 
