@@ -4,6 +4,9 @@ import numpy as np
 import random
 import time
 import os
+
+from raposa import raposa
+from assets import musica, load_assets
 #from menu import menu
 
 pygame.init()
@@ -30,6 +33,7 @@ abaixando = [pygame.image.load(os.path.join("assets/img", "jacare2.png")),
            pygame.image.load(os.path.join("assets/img", "jacare2.png"))]
 
 pontos = [1,0,2,3,4]
+
 
 class jacare:
     X_POS = 800
@@ -134,10 +138,6 @@ class Bird(Obstacle):
         self.index += 1
 
 
-
-
-
-
 def main():
 
     global game_speed, x_pos_bg, y_pos_bg, points, obstacles
@@ -149,6 +149,7 @@ def main():
     points = 0
     game_speed = 20
     perdeu = False
+
 
     def score():
         global points, game_speed
@@ -208,3 +209,14 @@ def main():
 
 
 main ()
+
+assets = load_assets
+assets[musica].play()
+
+raposa_sprite = pygame.sprite.Group()
+groups = {}
+groups['raposa'] = raposa_sprite
+for i in range(0,3):
+    fox = raposa(assets)
+    raposa_sprite.add(fox)
+
