@@ -209,6 +209,7 @@ def main():
             obstacle.draw(window)
             obstacle.update()
             if jogador.jac_rect.colliderect(obstacle.rect):
+                pygame.draw.rect(window, (255,0,0), jogador.jac_rect,2)
                 pygame.time.delay(30)
                 #death_count += 1
                 #menu(death_count)
