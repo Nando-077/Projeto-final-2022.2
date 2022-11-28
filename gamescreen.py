@@ -1,3 +1,4 @@
-import pygame
-from config import  altura, largura
-from assets import load_assets, fundo
+from inicio import menu
+pontos = [1,0,2,3,4]
+
+menu (pontos)
