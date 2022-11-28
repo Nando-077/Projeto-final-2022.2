@@ -4,6 +4,7 @@ import numpy as np
 import random
 import time
 import os
+from inicio import menu
 
 #from raposa import raposa
 from assets import musica, load_assets
@@ -143,7 +144,7 @@ class raposa(Obstacle):
 
 
 
-def main():
+def main(pontos):
 
     global game_speed, x_pos_bg, y_pos_bg, points, obstacles
     game = True
@@ -170,7 +171,7 @@ def main():
         window.blit(text, textRect)
         
     
-    def vencedores():
+    def vencedores(pontos):
         ordenado = sorted(pontos, reverse = True)
         dist = 100
         contador = 0
@@ -223,11 +224,13 @@ def main():
                 #death_count += 1
                 #menu(death_count)
         score()
-        vencedores()
+        vencedores(pontos)
         
         if perdeu == True:
             pontos.append(points)
+            menu (pontos)
             perdeu = False
+            
             #game = False
             #vencedores()
 
@@ -235,7 +238,7 @@ def main():
         pygame.display.update()
     
 
-main ()
+main (pontos)
 
 #assets = load_assets
 #assets[musica].play()

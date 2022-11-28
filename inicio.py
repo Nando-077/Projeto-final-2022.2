@@ -1,12 +1,13 @@
-def menu ():
+def menu (pontos):
 
+    from jogo import main
     import pygame
 
     pygame.init()
 
     # ----- Gera tela principal
-    largura = 600
-    altura = 400
+    largura = 1300
+    altura = 700
     window = pygame.display.set_mode((largura, altura))
 
 
@@ -21,7 +22,7 @@ def menu ():
     #imagem do jacare
     jaca_L = 90
     jaca_A = 90
-    jaca = pygame.image.load('assets/img/Desenho-Jacaré-PNG.png').convert()
+    jaca = pygame.image.load('assets/img/jacare.png').convert()
     jaca = pygame.transform.scale(jaca, (jaca_A,jaca_L))
 
     game = True
@@ -29,6 +30,22 @@ def menu ():
     jaca_y = 290
     jaca_speedx= 0.1
     jaca_speedy = 0
+
+    def vencedores(pontos):
+            font = pygame.font.Font('freesansbold.ttf', 20)
+            ordenado = sorted(pontos, reverse = True)
+            dist = 100
+            contador = 0
+            for top_c in ordenado:
+                imprime = top_c
+                t_vence = font.render(str(imprime),True,(50,50,225))
+                textRect = t_vence.get_rect()
+                textRect.center = (200, dist)
+                window.blit(t_vence, textRect)
+                dist = dist +20
+                contador = contador +1
+                if contador > 5:
+                    break
 
 
     # ===== Loop principal =====
@@ -48,12 +65,17 @@ def menu ():
         if jaca_y > altura or jaca_x + jaca_L < 0 or jaca_x > largura:
             jaca_x = -jaca_L
             jaca_y = 290
-            
+        
+        userInput = pygame.key.get_pressed()
+
         # ----- Gera saídas
         window.fill((0, 0, 0)) 
         window.blit(fundo, (0, 0))
         window.blit(jaca, (jaca_x,jaca_y ))
-        
+
+        vencedores(pontos)
+        if userInput[pygame.K_UP]:
+            main (pontos)
 
         # ----- Atualiza estado do jogo
         pygame.display.update()  # Mostra o novo frame para o jogador
