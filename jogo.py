@@ -30,6 +30,10 @@ pontos = [1,0,2,3,4]
 raposa_tx= pygame.transform.scale(raposa_tx, (120,90))
 raposa_tx= pygame.transform.flip(raposa_tx,True,False)
 
+correndo= pygame.transform.scale(correndo, (120,90))
+pulando= pygame.transform.scale(pulando, (120,90))
+abaixando= pygame.transform.scale(abaixando, (120,45))
+
 class jacare:
     X_POS =200
     Y_POS = 405
