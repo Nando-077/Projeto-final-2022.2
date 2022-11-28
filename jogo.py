@@ -173,6 +173,7 @@ def main():
     def vencedores():
         ordenado = sorted(pontos, reverse = True)
         dist = 100
+        contador = 0
         for top_c in ordenado:
             imprime = top_c
             t_vence = font.render(str(imprime),True,(50,50,225))
@@ -180,6 +181,9 @@ def main():
             textRect.center = (200, dist)
             window.blit(t_vence, textRect)
             dist = dist +20
+            contador = contador +1
+            if contador > 5:
+                break
             
 
 
@@ -215,18 +219,21 @@ def main():
             if jogador.jac_rect.colliderect(obstacle.rect):
                 pygame.draw.rect(window, (255,0,0), jogador.jac_rect,2)
                 pygame.time.delay(30)
+                perdeu = True
                 #death_count += 1
                 #menu(death_count)
         score()
         vencedores()
+        
         if perdeu == True:
             pontos.append(points)
-            game = False
-
+            perdeu = False
+            #game = False
+            #vencedores()
 
         clock.tick(30)
         pygame.display.update()
-
+    
 
 main ()
 
