@@ -74,7 +74,7 @@ def menu (pontos):
         window.blit(jaca, (jaca_x,jaca_y ))
 
         vencedores(pontos)
-        if userInput[pygame.K_UP]:
+        if userInput[pygame.K_1]:
             from jogo import main
             main (pontos)
 

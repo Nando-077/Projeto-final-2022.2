@@ -179,11 +179,13 @@ def main(pontos):
         ordenado = sorted(pontos, reverse = True)
         dist = 100
         contador = 0
+        numeros = 1
         for top_c in ordenado:
             imprime = top_c
             t_vence = font.render(str(imprime),True,(50,50,225))
             textRect = t_vence.get_rect()
             textRect.center = (200, dist)
+            window.blit(t_vence, textRect)
             window.blit(t_vence, textRect)
             dist = dist +20
             contador = contador +1
