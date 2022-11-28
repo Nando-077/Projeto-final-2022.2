@@ -1,6 +1,6 @@
 def menu (pontos):
 
-    from jogo import main
+    
     import pygame
 
     pygame.init()
@@ -75,6 +75,7 @@ def menu (pontos):
 
         vencedores(pontos)
         if userInput[pygame.K_UP]:
+            from jogo import main
             main (pontos)
 
         # ----- Atualiza estado do jogo
