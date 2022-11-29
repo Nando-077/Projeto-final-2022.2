@@ -182,7 +182,7 @@ def main(pontos):
         numeros = 1
         for top_c in ordenado:
             imprime = top_c
-            t_vence = font.render(str(imprime),True,(50,50,225))
+            t_vence = font.render(str(imprime),True,(0,0,0))
             textRect = t_vence.get_rect()
             textRect.center = (200, dist)
             window.blit(t_vence, textRect)
