@@ -24,11 +24,12 @@ def menu (pontos):
     jaca_A = 90
     jaca = pygame.image.load('assets/img/jacare.png').convert()
     jaca = pygame.transform.scale(jaca, (jaca_A,jaca_L))
-
+    font = pygame.font.SysFont(None, 75)
+    text = font.render('Precione 1 para começar', True, (0, 0, 0))
     game = True
     jaca_x = -jaca_L
     jaca_y = 290
-    jaca_speedx= 0.1
+    jaca_speedx= 1
     jaca_speedy = 0
 
     def vencedores(pontos):
@@ -38,7 +39,7 @@ def menu (pontos):
             contador = 0
             for top_c in ordenado:
                 imprime = top_c
-                t_vence = font.render(str(imprime),True,(50,50,225))
+                t_vence = font.render(str(imprime),True,(0,0,0))
                 textRect = t_vence.get_rect()
                 textRect.center = (200, dist)
                 window.blit(t_vence, textRect)
@@ -72,6 +73,7 @@ def menu (pontos):
         window.fill((0, 0, 0)) 
         window.blit(fundo, (0, 0))
         window.blit(jaca, (jaca_x,jaca_y ))
+        window.blit(text, (375,50 ))
 
         vencedores(pontos)
         if userInput[pygame.K_1]:

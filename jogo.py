@@ -26,7 +26,7 @@ abaixando = pygame.image.load('assets/img/jacare2.png').convert_alpha()
 pulando = pygame.image.load('assets/img/jacare.png').convert_alpha()
 raposa_tx = pygame.image.load('assets/img/raposa.png').convert_alpha()
 
-pontos = [1,0,2,3,4]
+pontos = []
 raposa_tx= pygame.transform.scale(raposa_tx, (120,90))
 raposa_tx= pygame.transform.flip(raposa_tx,True,False)
 
@@ -169,7 +169,7 @@ def main(pontos):
         if points % 100 == 0:
             game_speed += 1
 
-        text = font.render("Points: " + str(points), True, (225, 225, 225))
+        text = font.render("Points: " + str(points), True, (0, 0, 0))
         textRect = text.get_rect()
         textRect.center = (1000, 100)
         window.blit(text, textRect)
