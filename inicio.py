@@ -16,7 +16,7 @@ def menu (pontos):
 
 
     # ----- Inicia assets
-    fundo = pygame.image.load('assets/img/download (1).jpg').convert()
+    fundo = pygame.image.load('assets/img/FSC4900.jpg').convert()
     fundo = pygame.transform.scale(fundo, (largura,altura))
 
     #imagem do jacare

@@ -20,7 +20,7 @@ altura = 700
 window = pygame.display.set_mode((largura, altura))
 
 
-imagem = pygame.image.load('assets/img/download (1).jpg').convert_alpha()
+imagem = pygame.image.load('assets/img/FSC4900.jpg').convert_alpha()
 correndo = pygame.image.load('assets/img/jacare.png').convert_alpha()
 abaixando = pygame.image.load('assets/img/jacare2.png').convert_alpha()
 pulando = pygame.image.load('assets/img/jacare.png').convert_alpha()
@@ -208,7 +208,7 @@ def main(pontos):
                 game = False
 
         window.fill((225,225,225))
-        fundo = pygame.image.load('assets/img/download (1).jpg').convert()
+        fundo = pygame.image.load('assets/img/FSC4900.jpg').convert()
         fundo = pygame.transform.scale(fundo, (largura, altura))
         userInput = pygame.key.get_pressed()
         window.blit(fundo, (0, 0))
