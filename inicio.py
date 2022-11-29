@@ -1,3 +1,4 @@
+
 def menu (pontos):
 
     
@@ -22,7 +23,7 @@ def menu (pontos):
     #imagem do jacare
     jaca_L = 90
     jaca_A = 90
-    jaca = pygame.image.load('assets/img/jacare.png').convert()
+    jaca = pygame.image.load('assets/img/jacare.png').convert_alpha()
     jaca = pygame.transform.scale(jaca, (jaca_A,jaca_L))
     font = pygame.font.SysFont(None, 75)
     text = font.render('Precione 1 para começar', True, (255, 255, 255))
