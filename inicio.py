@@ -16,7 +16,7 @@ def menu (pontos):
 
 
     # ----- Inicia assets
-    fundo = pygame.image.load('assets/img/FSC4900.jpg').convert()
+    fundo = pygame.image.load('assets/img/insper.938cda6f.jpg').convert()
     fundo = pygame.transform.scale(fundo, (largura,altura))
 
     #imagem do jacare
@@ -25,7 +25,7 @@ def menu (pontos):
     jaca = pygame.image.load('assets/img/jacare.png').convert()
     jaca = pygame.transform.scale(jaca, (jaca_A,jaca_L))
     font = pygame.font.SysFont(None, 75)
-    text = font.render('Precione 1 para começar', True, (0, 0, 0))
+    text = font.render('Precione 1 para começar', True, (255, 255, 255))
     game = True
     jaca_x = -jaca_L
     jaca_y = 290
@@ -39,7 +39,7 @@ def menu (pontos):
             contador = 0
             for top_c in ordenado:
                 imprime = top_c
-                t_vence = font.render(str(imprime),True,(0,0,0))
+                t_vence = font.render(str(imprime),True,(255,255,255))
                 textRect = t_vence.get_rect()
                 textRect.center = (200, dist)
                 window.blit(t_vence, textRect)
