@@ -9,6 +9,7 @@ from inicio import menu
 #from raposa import raposa
 from assets import musica, load_assets
 #from menu import menu
+from config import SND_DIR
 
 pygame.init()
 
@@ -18,6 +19,8 @@ pygame.init()
 largura = 1300
 altura = 700
 window = pygame.display.set_mode((largura, altura))
+
+musica = pygame.mixer.Sound(os.path.join(SND_DIR, 'Som.mp3'))
 
 
 imagem = pygame.image.load('assets/img/FSC4900.jpg').convert_alpha()
@@ -161,6 +164,9 @@ def main(pontos):
     perdeu = False
     x_pos_bg = 0
     y_pos_bg = 380
+    #assets = load_assets
+    pygame.mixer.music.set_volume(0.4)
+    musica.play()
   
 
     def score():
