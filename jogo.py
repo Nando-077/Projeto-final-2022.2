@@ -165,8 +165,8 @@ def main(pontos):
     x_pos_bg = 0
     y_pos_bg = 380
     #assets = load_assets
-    pygame.mixer.music.set_volume(0.4)
-    musica.play()
+    #pygame.mixer.music.set_volume(0.4)
+    #musica.play()
   
 
     def score():
@@ -242,6 +242,7 @@ def main(pontos):
             pontos.append(points)
             menu (pontos)
             perdeu = False
+            #musica.stop()
             
             #game = False
             #vencedores()
